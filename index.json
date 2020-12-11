@@ -1,0 +1,20 @@
+{
+    "name":"MM32SPIN222",
+    "type":"SoC",
+    "Vendor":"MindMotion",
+    "info":"MOTOR SoC",
+    "Core":"Cortex M0",
+    "Freq":"72MHz",
+    "RAM":"4KB",
+    "Flash":"32KB",
+    "package":"QFN32",
+    "power":[3.0,16],
+    "peripheral": ["ADC","USB","RTC","UART","I2C","SPI","DMA"],
+    "ADC":[1,9,12,1000],
+    "DMA":[1,5],
+    "UART":[1,10500],
+    "MOSFET":[1,1.5],
+    "url":"https://github.com/SoCXin/MM32SPIN222",
+    "homepage": "http://www.mindmotion.com.cn/",
+    "version":"1.0.0"
+}
