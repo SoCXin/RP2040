@@ -1,0 +1,10 @@
+{
+    "type":"MCU",
+    "name":"RP2040",
+    "package":["QFN56"],
+    "QFN48": {
+        "name":"RP2040",
+        "peripheral": ["ADC","TIM","UART1","UART2","I2C","SPI","PWM"],
+        "GPIO":50
+    }
+}

@@ -1,33 +1,31 @@
-﻿# [MM32SPIN222](https://github.com/SoCXin/MM32SPIN222)
+﻿# [RP2040](https://github.com/SoCXin/RP2040)
 
 [![sites](http://182.61.61.133/link/resources/SoC.png)](http://www.SoC.Xin)
 
-#### [Vendor](https://github.com/SoCXin/Vendor)：[MindMotion](http://www.mindmotion.com.cn/)
+#### [Vendor](https://github.com/SoCXin/Vendor)：[Raspberry Pi](https://www.raspberrypi.org/)
 #### [Core](https://github.com/SoCXin/Cortex)：[Cortex M0](https://github.com/SoCXin/CM0)
-#### [Level](https://github.com/SoCXin/Level)：72MHz
+#### [Level](https://github.com/SoCXin/Level)：2 * 133MHz
 
-## [描述](https://github.com/SoCXin/MM32SPIN222/wiki)
+## [描述](https://github.com/SoCXin/RP2040/wiki)
 
-[MM32SPIN222](https://github.com/SoCXin/MM32SPIN222)
+[RP2040](https://github.com/SoCXin/RP2040) 基于Cortex-M0内核，集成128K-256K Flash，24K RAM，具备丰富的模拟和数字外设，并具有优异的低功耗特性。RP2040xxx系列包含两个子系列，分别为支持无晶振USB FS device的RP2040xxU系列，不支持USB的 RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
 
-
-[![sites](docs/MM32SPIN222.png)](https://github.com/SoCXin/MM32SPIN222)
+[![sites](docs/RP2040.png)](https://github.com/SoCXin/RP2040)
 
 ##### 关键特性
 
-* 集成 5V LDO 线性稳压器，工作电压3V-16V
-* 集成栅极驱动器驱动电流1.5A(Continuous)
-* 电压比较器
-* 封装(QFN32)
+* 支持无晶振USB FS(1.1) device
+* 2xOPA
+* 12bit SAR-ADC
+* 2xLPUART + 2xUART
 
-### [资源收录](https://github.com/SoCXin/MM32SPIN222)
+### [资源收录](https://github.com/SoCXin/RP2040)
 
-* [文档](docs/)
-* [资源](src/)
-* [工程](project/)
+* [参考文档](docs/)
+* [参考资源](src/)
+* [参考工程](project/)
 
 ### [选型建议](https://github.com/SoCXin)
 
-[MM32SPIN222](https://github.com/SoCXin/MM32SPIN222)
-
-###  [SoC.芯](http://www.SoC.Xin)
+[RP2040](https://github.com/SoCXin/RP2040)
+###  [www.SoC.xin(芯)](http://www.SoC.Xin)

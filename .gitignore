@@ -1,3 +1,9 @@
 *.pyc
-.pio/
-.vscode/
+*.pio/
+*.vscode/
+*Listings/
+*Objects/
+*Listings/
+*Obj/
+*.xcl
+*.pbi
