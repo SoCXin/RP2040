@@ -14,10 +14,12 @@
 
 ##### 关键特性
 
-* 支持无晶振USB FS(1.1) device
-* 2xOPA
-* 12bit SAR-ADC
-* 2xLPUART + 2xUART
+* Dual-core Arm Cortex-M0+ @ 133MHz
+* 264KB RAM
+* Support for up to 16MB of off-chip Flash memory via dedicated QSPI bus
+* Interpolator and integer divider peripherals
+* 2 × UARTs, 2 × SPI controllers, and 2 × I2C controllers
+* USB mass-storage boot mode with UF2 support, for drag-and-drop programming
 
 ### [资源收录](https://github.com/SoCXin/RP2040)
 
