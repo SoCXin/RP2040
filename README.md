@@ -7,9 +7,7 @@
 
 ## [简介](https://github.com/SoCXin/RP2040/wiki)
 
-[RP2040](https://github.com/SoCXin/RP2040) 集成128K-256K Flash，264K RAM
-
-具备丰富的模拟和数字外设，并具有优异的低功耗特性。RP2040xxx系列包含两个子系列，分别为支持无晶振USB FS device的RP2040xxU系列，不支持USB的 RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
+[RP2040](https://github.com/SoCXin/RP2040) 集成128K-256K Flash，264K RAM。RP2040xxx系列包含两个子系列，分别为支持无晶振USB FS device的RP2040xxU系列，不支持USB的 RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
 
 [![sites](docs/RP2040.png)](https://www.raspberrypi.org/products/raspberry-pi-pico/)
 
@@ -19,7 +17,7 @@
 * 264KB RAM
 * up to 16MB QSPI Flash
 * 2 × UART, 2 × SPI , 2 × I2C
-* USB mass-storage boot mode with UF2
+* USB1.1 with UF2
 
 #### 封装规格
 
@@ -34,6 +32,6 @@
 
 ### [选型建议](https://github.com/SoCXin)
 
-[RP2040](https://github.com/SoCXin/RP2040)
+[RP2040](https://github.com/SoCXin/RP2040) 相比较传统的MCU而言最大的优势在于开源生态号召力，可以预期基于该平台将有大量有趣的单片机项目诞生。
 
 ### [探索芯世界 www.SoC.xin](http://www.SoC.Xin)

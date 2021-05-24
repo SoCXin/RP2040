@@ -9,7 +9,7 @@
 *.hex
 *.bin
 *.bak
-*.txt
+# *.txt
 *.lst
 *.uvgu*
 *.sct

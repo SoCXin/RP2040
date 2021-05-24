@@ -1,0 +1,29 @@
+name: src
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v2
+      with:
+        submodules: "recursive"
+        fetch-depth: 1
+
+    - name: Install
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-none-eabi cmake
+
+    - name: Build
+      if: success()
+      working-directory: src/demo
+      run: |
+        mkdir build && cd build
+        cmake ..
+        # cmake CROSS_COMPILER_PATH=../gcc-arm-none-eabi-10-2020-q4-major ..
