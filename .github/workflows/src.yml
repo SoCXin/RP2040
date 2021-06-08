@@ -46,7 +46,7 @@ jobs:
 
   examples:
     # if: github.repository_owner == 'SoCXin'
-    runs-on: [self-hosted, Linux, X64] #ubuntu-latest #
+    runs-on: ubuntu-latest #[self-hosted, Linux, X64] #
     steps:
     - name: Clean workspace
       run: |
