@@ -9,29 +9,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out
-      uses: actions/checkout@v2
-      with:
-        submodules: "recursive"
-        fetch-depth: 1
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
 
-    - name: Checkout pico-sdk
-      uses: actions/checkout@v2
-      with:
-        repository: raspberrypi/pico-sdk
-        token: ${{ secrets.SOC_XIN_TOCKEN }}
-        path: sdk
+      - name: Checkout pico-sdk
+        uses: actions/checkout@v2
+        with:
+          repository: raspberrypi/pico-sdk
+          token: ${{ secrets.SOC_XIN_TOCKEN }}
+          path: sdk
 
-    - name: Install
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+          export PICO_SDK_PATH=$PWD/sdk
 
+      - name: Build
+        if: success()
+        working-directory: src/demo
+        run: |
+          mkdir build && cd build
+          cmake .. && make
+          # cmake -DPICO_SDK_PATH=../../../sdk .. && make
 
-    - name: Build
-      if: success()
-      working-directory: src/demo
-      run: |
-        mkdir build && cd build
-        # cmake .. && make
-        cmake -DPICO_SDK_PATH=../../../sdk .. && make
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pico-demo
+          path: src/demo/build
+

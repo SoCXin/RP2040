@@ -2,8 +2,10 @@
 
 [![sites](http://182.61.61.133/link/resources/SoC.png)](http://www.SoC.Xin)
 
+[![Build Status](https://github.com/SoCXin/RP2040/workflows/src/badge.svg)](https://github.com/SoCXin/RP2040/actions/workflows/src.yml)
+
 * [Raspberry](https://www.raspberrypi.org/)：[Cortex-M0](https://github.com/SoCXin/Cortex)
-* [L5R3](https://github.com/SoCXin/Level) ：2 x 133 MHz x 0.95 DMIPS/MHz
+* [L5R3](https://github.com/SoCXin/Level)：2 x 133 MHz x 0.95 DMIPS/MHz (2x157CoreMark)
 
 ## [简介](https://github.com/SoCXin/RP2040/wiki)
 
@@ -16,7 +18,7 @@
 * 264KB RAM, 128K-256K Flash
 * up to 16MB QSPI Flash
 * 2 × UART, 2 × SPI , 2 × I2C
-* USB1.1 with UF2
+* USB1.1 OTG with UF2
 
 ### [资源收录](https://github.com/SoCXin)
 
