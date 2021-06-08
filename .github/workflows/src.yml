@@ -31,6 +31,10 @@ jobs:
           sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
           export PICO_SDK_PATH=$PWD/sdk
 
+      - name: Get core count
+        id: core_count
+        run : cat /proc/cpuinfo  | grep processor | wc -l
+
       - name: Build
         if: success()
         working-directory: src/demo
@@ -38,8 +42,7 @@ jobs:
         run: |
           mkdir build && cd build
           PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-          cmake .. && make
-          # cmake -DPICO_SDK_PATH=../../../sdk .. && make
+          cmake .. --parallel ${{steps.core_count.outputs.output}} && make
 
       - uses: actions/upload-artifact@v2
         with:
@@ -50,32 +53,37 @@ jobs:
     # if: github.repository_owner == 'SoCXin'
     runs-on: ubuntu-latest #[self-hosted, Linux, X64] #
     steps:
-    - name: Check out
-      uses: actions/checkout@v2
-      with:
-        submodules: "recursive"
-        fetch-depth: 1
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
 
-    - name: Checkout pico-sdk/develop
-      uses: actions/checkout@v2
-      with:
-        repository: raspberrypi/pico-sdk
-        ref: develop
-        path: pico-sdk
+      - name: Checkout pico-sdk/develop
+        uses: actions/checkout@v2
+        with:
+          repository: raspberrypi/pico-sdk
+          ref: develop
+          path: pico-sdk
 
-    - name: Checkout pico-sdk submodules
-      working-directory: pico-sdk
-      run: git submodule update --init
+      - name: Checkout pico-sdk submodules
+        working-directory: pico-sdk
+        run: git submodule update --init
 
-    - name: Get core count
-      id: core_count
-      run : cat /proc/cpuinfo  | grep processor | wc -l
+      - name: Get core count
+        id: core_count
+        run : cat /proc/cpuinfo  | grep processor | wc -l
 
-    - name: Build Environment
-      working-directory: src/examples
-      shell: bash
-      run: |
-        mkdir build && cd build
-        PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        # cmake .. && make
-        cmake --build .. --config $BUILD_TYPE --parallel ${{steps.core_count.outputs.output}}
+      - name: Build Environment
+        working-directory: src/examples
+        shell: bash
+        run: |
+          mkdir build && cd build
+          PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+          # cmake .. && make
+          cmake .. --parallel ${{steps.core_count.outputs.output}} && make
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pico-examples
+          path: src/examples/build
