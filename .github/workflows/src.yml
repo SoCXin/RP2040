@@ -18,18 +18,22 @@ jobs:
           submodules: "recursive"
           fetch-depth: 1
 
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib git
+
       - name: Checkout pico-sdk
         uses: actions/checkout@v2
         with:
           repository: raspberrypi/pico-sdk
           token: ${{ secrets.SOC_XIN_TOCKEN }}
+          ref: develop
           path: pico-sdk
 
-      - name: Install
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
-          export PICO_SDK_PATH=$PWD/sdk
+      - name: Checkout pico-sdk submodules
+        working-directory: pico-sdk
+        run: git submodule update --init
 
       - name: Get core count
         id: core_count
@@ -42,7 +46,7 @@ jobs:
         run: |
           mkdir build && cd build
           PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-          cmake .. --parallel ${{steps.core_count.outputs.output}} && make
+          cmake .. && make
 
       - uses: actions/upload-artifact@v2
         with:
@@ -59,7 +63,7 @@ jobs:
           submodules: "recursive"
           fetch-depth: 1
 
-      - name: Checkout pico-sdk/develop
+      - name: Checkout pico-sdk
         uses: actions/checkout@v2
         with:
           repository: raspberrypi/pico-sdk
@@ -70,9 +74,14 @@ jobs:
         working-directory: pico-sdk
         run: git submodule update --init
 
-      - name: Get core count
-        id: core_count
-        run : cat /proc/cpuinfo  | grep processor | wc -l
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+
+      # - name: Get core count
+      #   id: core_count
+      #   run : cat /proc/cpuinfo  | grep processor | wc -l
 
       - name: Build Environment
         working-directory: src/examples
@@ -80,8 +89,7 @@ jobs:
         run: |
           mkdir build && cd build
           PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-          # cmake .. && make
-          cmake .. --parallel ${{steps.core_count.outputs.output}} && make
+          cmake .. && make
 
       - uses: actions/upload-artifact@v2
         with:
