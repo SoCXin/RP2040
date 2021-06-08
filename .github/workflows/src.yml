@@ -23,7 +23,7 @@ jobs:
         with:
           repository: raspberrypi/pico-sdk
           token: ${{ secrets.SOC_XIN_TOCKEN }}
-          path: sdk
+          path: pico-sdk
 
       - name: Install
         run: |
@@ -34,10 +34,12 @@ jobs:
       - name: Build
         if: success()
         working-directory: src/demo
+        shell: bash
         run: |
           mkdir build && cd build
-          # cmake .. && make
-          cmake -DPICO_SDK_PATH=../../../sdk .. && make
+          PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+          cmake .. && make
+          # cmake -DPICO_SDK_PATH=../../../sdk .. && make
 
       - uses: actions/upload-artifact@v2
         with:
@@ -48,16 +50,11 @@ jobs:
     # if: github.repository_owner == 'SoCXin'
     runs-on: ubuntu-latest #[self-hosted, Linux, X64] #
     steps:
-    - name: Clean workspace
-      run: |
-        echo "Cleaning up previous run"
-        rm -rf "${{ github.workspace }}"
-        mkdir -p "${{ github.workspace }}"
-
-    - name: Checkout pico-examples
+    - name: Check out
       uses: actions/checkout@v2
       with:
-        path: pico-examples
+        submodules: "recursive"
+        fetch-depth: 1
 
     - name: Checkout pico-sdk/develop
       uses: actions/checkout@v2
@@ -67,16 +64,14 @@ jobs:
         path: pico-sdk
 
     - name: Checkout pico-sdk submodules
-      working-directory: ${{github.workspace}}/pico-sdk
+      working-directory: pico-sdk
       run: git submodule update --init
 
     - name: Get core count
       id: core_count
       run : cat /proc/cpuinfo  | grep processor | wc -l
 
-    - name: Create Build Environment
-      # Some projects don't allow in-source building, so create a separate build directory
-      # We'll use this as our working directory for all subsequent commands
+    - name: Build Environment
       working-directory: src/examples
       shell: bash
       run: |
