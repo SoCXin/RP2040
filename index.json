@@ -1,56 +1,27 @@
 {
     "type":"MCU",
     "name":"RP2040",
-    "series":["RP2040"],
-    "peripheral": ["ADC","UART","I2C","SPI","PWM"],
-    "package":["LQFP144","LQFP100","LQFP64","LQFP48","QFN36"],
-    "manufacturer": {
-        "vendor":"ST",
-        "homepage":"https://my.st.com/content/my_st_com/zh/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/RP2040.html"
-    },
-    "url":"http://www.SoC.xin/RP2040",
-    "repo":"https://github.com/SoCXin/RP2040",
-    "version":"1.0.0",
-    "UID": {
-        "bits": 96,
-        "base": "0x1FFFF7E8",
-        "addr": 536868840
-    },
+    "title": "Raspberry Pi RP2040 MCU",
+    "description":"Raspberry Pi Cortex-M0 dual core MCU",
     "Core": {
-        "num": 1,
-        "architecture":"Cortex-M3",
-        "Freq":[64,72]
+        "num": 2,
+        "type":"Cortex-M0",
+        "Freq":160,
+        "DMIPS": 600,
+        "CoreMark": 660
     },
-    "RP2040": {
-        "SRAM":20000,
-        "Flash":64000,
-        "package":"QFN20",
-        "peripheral": ["ADC","TIM","PWM"],
-        "GPIO":18,
-        "price":6.8
+    "manufacturer": {
+        "vendor":"Raspberry Pi",
+        "homepage":"https://www.raspberrypi.org/documentation/rp2040/getting-started/"
     },
-    "UART": {
-        "mark": ["UART1","UART2"],
-        "BIT":[5,6,7,8,9],
-        "ISO7816":true,
-        "LIN":true,
-        "BPS": [48,3000000]
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SoCXin/RP2040.git"
     },
-    "ADC": {
-        "num": 1,
-        "channel": 8,
-        "resolution": 12,
-        "rate": 1024
-    },
-    "TIM": {
-        "mark": ["TIM1","TIM3","TIM14"],
-        "TIM1":[16,4,0],
-        "TIM3":[16,3,0],
-        "TIM14":[16,1,0],
-        "systick": 24,
-        "WWDG": true,
-        "IWDG": true
-    },
+    "version":"1.0.0",
+    "series":["RP2040"],
+    "package":["QFN56"],
+    "peripheral": ["ADC","DAC","USB","OTG","CAN","SDIO","USART","SPI","IIC"],
     "CLK": {
         "HSE": [1000,16000],
         "HSI": [16000],
@@ -66,13 +37,26 @@
         "Imax": 120
     },
     "EMC": {
-        "EFT": 2000,
+        "EFT": 4000,
+        "ESD": 4000
+    },
+    "ENV": {
+        "T": [-40,125],
         "ESD": 4000
     },
     "upload": {
-        "ISP": true,
+        "DFU": true,
         "IAP": true,
         "SWD": true,
         "speed": 115200
-    }
+    },
+    "keywords": [
+        "dev-platform",
+        "ARM",
+        "Cortex-M",
+        "Raspberry Pi",
+        "RP2040",
+        "DAC","SDIO","CAN","I2C","RTC","SPI",
+        "3.6V","1.8V"
+    ]
 }
