@@ -9,7 +9,7 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  demo:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -45,8 +45,8 @@ jobs:
           path: src/demo/build
 
   examples:
-    if: github.repository_owner == 'SoCXin'
-    runs-on: [self-hosted, Linux, X64]
+    # if: github.repository_owner == 'SoCXin'
+    runs-on: [self-hosted, Linux, X64] #ubuntu-latest #
     steps:
     - name: Clean workspace
       run: |
