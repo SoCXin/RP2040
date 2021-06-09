@@ -35,7 +35,7 @@ LICENSE*
 *.sct
 *.elf
 *.ini
-*_sc*
+# *_sc*
 *cm23*
 *cm33*
 *cm3*
