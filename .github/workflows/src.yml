@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - master
-env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
+
 
 jobs:
   demo:
@@ -39,20 +37,28 @@ jobs:
       #   id: core_count
       #   run : cat /proc/cpuinfo  | grep processor | wc -l
 
-      - name: Build
-        if: success()
-        working-directory: src/demo
+      - name: demo logic
+        working-directory: src/demo/logic
         shell: bash
         run: |
-          echo github.repository_owner
+          echo ${{ github.repository_owner }} 
           mkdir build && cd build
-          PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+          PICO_SDK_PATH=../../../../pico-sdk cmake ..
           cmake .. && make
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: pico-demo
-          path: src/demo/build
+      - name: demo probe
+        working-directory: src/demo/probe
+        shell: bash
+        run: |
+          echo ${{ github.repository_owner }} 
+          mkdir build && cd build
+          PICO_SDK_PATH=../../../../pico-sdk cmake .. 
+          cmake .. && make
+
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: pico-demo
+      #     path: src/demo/build
 
   examples:
     # if: github.repository_owner == 'SoCXin'
@@ -85,7 +91,7 @@ jobs:
         shell: bash
         run: |
           mkdir build && cd build
-          PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+          PICO_SDK_PATH=../../../pico-sdk cmake .. 
           cmake .. && make
 
       # - uses: actions/upload-artifact@v2
@@ -114,13 +120,13 @@ jobs:
         run: |
           cargo build --release
 
-      - name: rp2040-boot2-rs build 
-        working-directory: src/template/rp2040-boot2-rs
+      - name: pico-usb
+        working-directory: src/template/pico-usb
         run: |
           cargo build --release
 
-      - name: pico-usb
-        working-directory: src/template/pico-usb
+      - name: rp2040-boot2-rs build 
+        working-directory: src/template/rp2040-boot2-rs
         run: |
           cargo build --release
 
