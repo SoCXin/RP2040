@@ -9,6 +9,10 @@ Debug
 *.DS_Store
 *.autosave
 *~
+~*
+target
+.cargo
+*.lock
 Change*
 CHANGE*
 README*

@@ -1,0 +1,67 @@
+_svd: "./rp2040.svd"
+
+DMA:
+  _cluster:
+    "CH%s":
+      "CH?_READ_ADDR,CH??_READ_ADDR": {}
+      "CH?_WRITE_ADDR,CH??_WRITE_ADDR": {}
+      "CH?_TRANS_COUNT,CH??_TRANS_COUNT": {}
+      "CH?_CTRL_TRIG,CH??_CTRL_TRIG": {}
+      "CH?_AL1_CTRL,CH??_AL1_CTRL": {}
+      "CH?_AL1_READ_ADDR,CH??_AL1_READ_ADDR": {}
+      "CH?_AL1_WRITE_ADDR,CH??_AL1_WRITE_ADDR": {}
+      "CH?_AL1_TRANS_COUNT_TRIG,CH??_AL1_TRANS_COUNT_TRIG": {}
+      "CH?_AL2_CTRL,CH??_AL2_CTRL": {}
+      "CH?_AL2_TRANS_COUNT,CH??_AL2_TRANS_COUNT": {}
+      "CH?_AL2_READ_ADDR,CH??_AL2_READ_ADDR": {}
+      "CH?_AL2_WRITE_ADDR_TRIG,CH??_AL2_WRITE_ADDR_TRIG": {}
+      "CH?_AL3_CTRL,CH??_AL3_CTRL": {}
+      "CH?_AL3_WRITE_ADDR,CH??_AL3_WRITE_ADDR": {}
+      "CH?_AL3_TRANS_COUNT,CH??_AL3_TRANS_COUNT": {}
+      "CH?_AL3_READ_ADDR_TRIG,CH??_AL3_READ_ADDR_TRIG": {}
+
+PIO0:
+  _array:
+    "INSTR_MEM*": {}
+    "TXF*": {}
+    "RXF*": {}
+
+  _cluster:
+    "SM%s":
+      "SM*_CLKDIV": {}
+      "SM*_EXECCTRL": {}
+      "SM*_SHIFTCTRL": {}
+      "SM*_ADDR": {}
+      "SM*_INSTR": {}
+      "SM*_PINCTRL": {}
+
+    "SM_IRQ%s":
+      "IRQ*_INTE": {}
+      "IRQ*_INTF": {}
+      "IRQ*_INTS": {}
+
+IO_BANK0:
+  _cluster:
+    "GPIO%s":
+      "GPIO*_STATUS": {}
+      "GPIO*_CTRL": {}
+
+IO_QSPI:
+  _cluster:
+    "GPIO_QSPI%s":
+      "GPIO_QSPI_*_STATUS":
+        name: "GPIO_STATUS"
+      "GPIO_QSPI_*_CTRL":
+        name: "GPIO_CTRL"
+
+PADS_BANK0:
+  _array:
+    "GPIO*": {}
+
+USBCTRL_REGS:
+  # BUFF_STATUS is read-only in the SVD and datasheet, but used as read-write
+  # in the example code (see https://github.com/raspberrypi/pico-feedback/issues/36).
+  BUFF_STATUS:
+    _modify:
+      "EP*":
+        access: read-write

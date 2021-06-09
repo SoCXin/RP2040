@@ -4,8 +4,8 @@
 
 [![Build Status](https://github.com/SoCXin/RP2040/workflows/src/badge.svg)](https://github.com/SoCXin/RP2040/actions/workflows/src.yml)
 
-* [Raspberry](https://www.raspberrypi.org/)：[Cortex-M0](https://github.com/SoCXin/Cortex)
-* [L5R3](https://github.com/SoCXin/Level)：2 x 133 MHz x 0.95 DMIPS/MHz (2x157CoreMark)
+* [Raspberry](https://www.raspberrypi.org/)：[Armv6-M:Cortex-M0+](https://github.com/SoCXin/Cortex)
+* [L5R3](https://github.com/SoCXin/Level)：2 x 133 MHz x 0.94 DMIPS/MHz, [2.46 CoreMark/MHz](https://www.eembc.org/coremark/scores.php)
 
 ## [简介](https://github.com/SoCXin/RP2040/wiki)
 
