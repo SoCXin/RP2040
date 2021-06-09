@@ -109,19 +109,22 @@ jobs:
           target: thumbv6m-none-eabi
           override: true
 
-      - name: cargo build 
+      - name: rp2040-pac build 
         working-directory: src/template/rp2040-pac
         run: |
           cargo build --release
 
-      # - name: Run cargo
-      #   uses: actions-rs/cargo@v1
+      - name: rp2040-boot2-rs build 
+        working-directory: src/template/rp2040-boot2-rs
+        run: |
+          cargo build --release
+
+      - name: pico-usb
+        working-directory: src/template/pico-usb
+        run: |
+          cargo build --release
+
+      # - uses: actions/upload-artifact@v2
       #   with:
-      #     command: build
-      #     args: --release
-
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: rp2040-pac
-          path: src/template/rp2040-pac/target
+      #     name: rp2040-pac
+      #     path: src/template/rp2040-pac/target
