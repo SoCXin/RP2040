@@ -30,7 +30,7 @@ LICENSE*
 *.hex
 *.bin
 *.bak
-*.txt
+# *.txt
 *.lst
 *.sct
 *.elf

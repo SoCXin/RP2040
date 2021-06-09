@@ -123,19 +123,20 @@ jobs:
           override: true
 
       - name: rp2040-pac build 
+        if: ${{ github.repository_owner }} == 'SoCXin'
         working-directory: src/template/rp2040-pac
         run: |
           cargo build --release
 
-      - name: pico-usb
-        working-directory: src/template/pico-usb
-        run: |
-          cargo build --release
+      # - name: pico-usb
+      #   working-directory: src/template/pico-usb
+      #   run: |
+      #     cargo build --release
 
-      - name: rp2040-boot2-rs build 
-        working-directory: src/template/rp2040-boot2-rs
-        run: |
-          cargo build --release
+      # - name: rp2040-boot2-rs build 
+      #   working-directory: src/template/rp2040-boot2-rs
+      #   run: |
+      #     cargo build --release
 
       # - uses: actions/upload-artifact@v2
       #   with:
