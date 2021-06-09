@@ -35,9 +35,9 @@ jobs:
         working-directory: pico-sdk
         run: git submodule update --init
 
-      - name: Get core count
-        id: core_count
-        run : cat /proc/cpuinfo  | grep processor | wc -l
+      # - name: Get core count
+      #   id: core_count
+      #   run : cat /proc/cpuinfo  | grep processor | wc -l
 
       - name: Build
         if: success()
@@ -78,10 +78,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
-
-      # - name: Get core count
-      #   id: core_count
-      #   run : cat /proc/cpuinfo  | grep processor | wc -l
 
       - name: Build Environment
         working-directory: src/examples
