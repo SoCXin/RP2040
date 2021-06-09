@@ -44,6 +44,7 @@ jobs:
         working-directory: src/demo
         shell: bash
         run: |
+          echo github.repository_owner
           mkdir build && cd build
           PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
           cmake .. && make
@@ -87,10 +88,10 @@ jobs:
           PICO_SDK_PATH=../../../pico-sdk cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
           cmake .. && make
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: pico-examples
-          path: src/examples/build
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: pico-examples
+      #     path: src/examples/build
 
   rust:
     runs-on: ubuntu-latest
@@ -105,7 +106,7 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
-          target: thumbv7m-none-eabi
+          target: thumbv6m-none-eabi
           override: true
 
       - name: cargo build 
@@ -118,11 +119,6 @@ jobs:
       #   with:
       #     command: build
       #     args: --release
-
-      # - name: install  
-      #   run: |
-      #     sudo apt update -y
-      #     sudo apt install -y rust gcc-arm-none-eabi libnewlib-arm-none-eabi clang
 
 
       - uses: actions/upload-artifact@v2
