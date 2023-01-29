@@ -4,14 +4,16 @@ on:
   push:
     branches:
       - master
-
+    paths:
+      - 'src/**'
+      - '**.yml'
 
 jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: "recursive"
           fetch-depth: 1
@@ -23,7 +25,7 @@ jobs:
           sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib git
 
       - name: Checkout pico-sdk
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: raspberrypi/pico-sdk
           token: ${{ secrets.SOC_XIN_TOCKEN }}
@@ -51,7 +53,7 @@ jobs:
         shell: bash
         run: |
           mkdir build && cd build
-          PICO_SDK_PATH=../../../../pico-sdk cmake .. 
+          PICO_SDK_PATH=../../../../pico-sdk cmake ..
           cmake .. && make
 
       - name: demo extras
@@ -59,7 +61,7 @@ jobs:
         shell: bash
         run: |
           mkdir build && cd build
-          PICO_SDK_PATH=../../../../pico-sdk cmake .. 
+          PICO_SDK_PATH=../../../../pico-sdk cmake ..
           cmake .. && make
 
       # - uses: actions/upload-artifact@v2
@@ -72,13 +74,13 @@ jobs:
     runs-on: ubuntu-latest #[self-hosted, Linux, X64] #
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: "recursive"
           fetch-depth: 1
 
       - name: Checkout pico-sdk
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: raspberrypi/pico-sdk
           ref: develop
@@ -98,7 +100,7 @@ jobs:
         shell: bash
         run: |
           mkdir build && cd build
-          PICO_SDK_PATH=../../../pico-sdk cmake .. 
+          PICO_SDK_PATH=../../../pico-sdk cmake ..
           cmake .. && make
 
       # - uses: actions/upload-artifact@v2
@@ -109,7 +111,7 @@ jobs:
   rust:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
           fetch-depth: 1
@@ -122,7 +124,7 @@ jobs:
           target: thumbv6m-none-eabi
           override: true
 
-      - name: rp2040-pac build 
+      - name: rp2040-pac build
         if: ${{ github.repository_owner }} == 'SoCXin'
         working-directory: src/template/rp2040-pac
         run: |
@@ -133,7 +135,7 @@ jobs:
       #   run: |
       #     cargo build --release
 
-      # - name: rp2040-boot2-rs build 
+      # - name: rp2040-boot2-rs build
       #   working-directory: src/template/rp2040-boot2-rs
       #   run: |
       #     cargo build --release

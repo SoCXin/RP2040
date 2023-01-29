@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/SoCXin/RP2040/workflows/src/badge.svg)](https://github.com/SoCXin/RP2040/actions/workflows/src.yml)
 
 * [Raspberry](https://www.raspberrypi.org/)：[Cortex-M0+](https://github.com/SoCXin/Cortex)
-* [L2R2](https://github.com/SoCXin/Level)：2 x 133 MHz, [2.46 CoreMark/MHz](https://www.eembc.org/coremark/scores.php) , [￥4.53](https://item.szlcsc.com/2392.html)
+* [L3R2](https://github.com/SoCXin/Level)：2 x 133 MHz , [￥4.53](https://item.szlcsc.com/2392.html)
 
 
 ## [简介](https://github.com/SoCXin/RP2040/wiki)
@@ -33,6 +33,8 @@
 
 2021年1月发布的[RP2040](https://item.szlcsc.com/2392.html) 系列包含两个子系列，分别为支持无晶振USB FS device的RP2040xxU系列，不支持USB的 RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。性价比非常高，开源资源丰富，在Arduino和Micropython生态资源上拥有无与伦比的优势。
 
-采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有ADC精度高于ESP32，可用于替代ATmega328p，成为创客首选。
+采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有ADC精度高于ESP32，可用于替代ATmega328p，作为通用性很强的MCU，可广泛应用于各种外设驱动和处理场景。
+
+软件开发可使用[platform-rp2040](https://github.com/OS-Q/platform-rp2040)
 
 ## [www.SoC.xin](http://www.SoC.Xin)
