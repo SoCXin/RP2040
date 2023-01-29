@@ -50,6 +50,12 @@
         "SWD": true,
         "speed": 115200
     },
+    "temp": [-40,85],
+    "volt": [1.8,3.6],
+    "ESD": {
+        "HBM": 2000,
+        "CDM": 500
+    },
     "keywords": [
         "dev-platform",
         "ARM",
