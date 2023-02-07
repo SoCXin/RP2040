@@ -15,10 +15,6 @@ target
 *.lock
 Change*
 CHANGE*
-README*
-COPY*
-*CONTRIBU*
-LICENSE*
 *.swp
 *.lck
 *.log
@@ -34,27 +30,6 @@ LICENSE*
 *.lst
 *.sct
 *.elf
-*.ini
 # *_sc*
-*cm23*
-*cm33*
-*cm3*
-*cm4*
-*cm7*
-*cm1*
 # *cm0*
 *.uvgu*
-.gitmodules
-*.png
-*.jpg
-*.rst
-.travis.yml
-doc
-tests
-# mk
-*.md
-Doxyfile
-**/*/README*
-*.html
-*.gif
-FILES
