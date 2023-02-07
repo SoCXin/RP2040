@@ -1,5 +1,0 @@
-if (NOT PICO_NO_HARDWARE)
-    add_subdirectory(dht_sensor)
-    add_subdirectory(hello_7segment)
-    add_subdirectory(hello_gpio_irq)
-endif ()

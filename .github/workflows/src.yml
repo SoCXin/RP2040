@@ -27,7 +27,7 @@ jobs:
       - name: Checkout pico-sdk
         uses: actions/checkout@v3
         with:
-          repository: raspberrypi/pico-sdk
+          repository: SoCXin/RP2040-SDK
           token: ${{ secrets.SOC_XIN_TOCKEN }}
           ref: develop
           path: pico-sdk
@@ -68,45 +68,6 @@ jobs:
       #   with:
       #     name: pico-demo
       #     path: src/demo/build
-
-  examples:
-    if: ${{ github.repository_owner }} == 'SoCXin'
-    runs-on: ubuntu-latest #[self-hosted, Linux, X64] #
-    steps:
-      - name: Check out
-        uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
-          fetch-depth: 1
-
-      - name: Checkout pico-sdk
-        uses: actions/checkout@v3
-        with:
-          repository: raspberrypi/pico-sdk
-          ref: develop
-          path: pico-sdk
-
-      - name: pico-sdk submodules
-        working-directory: pico-sdk
-        run: git submodule update --init
-
-      - name: Install
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
-
-      - name: Build Environment
-        working-directory: src/examples
-        shell: bash
-        run: |
-          mkdir build && cd build
-          PICO_SDK_PATH=../../../pico-sdk cmake ..
-          cmake .. && make
-
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     name: pico-examples
-      #     path: src/examples/build
 
   rust:
     runs-on: ubuntu-latest
