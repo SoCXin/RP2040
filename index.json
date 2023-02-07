@@ -6,7 +6,7 @@
     "Core": {
         "num": 2,
         "type":"Cortex-M0",
-        "Freq":160,
+        "Freq":133,
         "DMIPS": 600,
         "CoreMark": 660
     },
