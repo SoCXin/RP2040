@@ -9,12 +9,19 @@ Debug
 *.DS_Store
 *.autosave
 *~
+*#
 ~*
 target
 .cargo
 *.lock
 Change*
 CHANGE*
+# README*
+COPY*
+*CONTRIBU*
+LICENSE*
+HACKING*
+Doxyfile
 *.swp
 *.lck
 *.log
@@ -25,11 +32,4 @@ CHANGE*
 *.map
 *.hex
 *.bin
-*.bak
-# *.txt
-*.lst
-*.sct
-*.elf
-# *_sc*
-# *cm0*
-*.uvgu*
+*bak

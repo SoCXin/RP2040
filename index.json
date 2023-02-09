@@ -12,7 +12,7 @@
     },
     "manufacturer": {
         "vendor":"Raspberry Pi",
-        "homepage":"https://www.raspberrypi.org/documentation/rp2040/getting-started/"
+        "homepage":"https://www.raspberrypi.com"
     },
     "repository": {
         "type": "git",
@@ -21,48 +21,20 @@
     "version":"1.0.0",
     "series":["RP2040"],
     "package":["QFN56"],
-    "peripheral": ["ADC","DAC","USB","OTG","CAN","SDIO","USART","SPI","IIC"],
-    "CLK": {
-        "HSE": [1000,16000],
-        "HSI": [16000],
-        "LSI": [32],
-        "PLL": [16000,16000],
-        "DIV": [1,128],
-        "accuracy": 0.02
-    },
-    "PWR": {
-        "VDD": [2000,3600],
-        "PVD": [1820,1810],
-        "IDD": [2.21,14.31],
-        "Imax": 120
-    },
+    "peripheral": ["USB","ADC","UART","SPI","I2C"],
     "EMC": {
         "EFT": 4000,
         "ESD": 4000
     },
-    "ENV": {
-        "T": [-40,125],
-        "ESD": 4000
-    },
-    "upload": {
-        "DFU": true,
-        "IAP": true,
-        "SWD": true,
-        "speed": 115200
-    },
-    "temp": [-40,85],
-    "volt": [1.8,3.6],
     "ESD": {
         "HBM": 2000,
         "CDM": 500
     },
+    "temp": [-40,85],
+    "volt": [1.8,3.6],
     "keywords": [
-        "dev-platform",
-        "ARM",
-        "Cortex-M",
+        "Cortex-M0",
         "Raspberry Pi",
-        "RP2040",
-        "DAC","SDIO","CAN","I2C","RTC","SPI",
-        "3.6V","1.8V"
+        "USB","ADC","UART","SPI","I2C"
     ]
 }
