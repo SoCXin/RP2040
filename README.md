@@ -1,14 +1,14 @@
-﻿# [RP2040](https://doc.soc.xin/RP2040)
+﻿# [RP2040](https://www.soc.xin/RP2040)
 
 [![Build Status](https://github.com/SoCXin/RP2040/workflows/src/badge.svg)](https://github.com/SoCXin/RP2040/actions/workflows/src.yml)
+[![Build Status](https://github.com/SoCXin/RP2040/workflows/docs/badge.svg)](https://github.com/SoCXin/docs/tree/RP2040)
 
-* [Raspberry](https://www.raspberrypi.com/)：[Cortex-M0+](https://github.com/SoCXin/Cortex)
+* [Raspberry Pi](https://www.raspberrypi.com/)：[Cortex-M0+](https://github.com/SoCXin/Cortex)
 * [L2R2](https://github.com/SoCXin/Level)：2 x 133 MHz , [￥5.3](https://item.szlcsc.com/2392.html)
 
+## [芯片简介](https://github.com/SoCXin/RP2040/wiki)
 
-## [简介](https://github.com/SoCXin/RP2040/wiki)
-
-[RP2040](https://www.raspberrypi.com/products/raspberry-pi-pico/) is a low-cost, high-performance microcontroller device with flexible digital interfaces. Key features: Dual Cortex M0+ processor cores, up to 133 MHz 264 kB of embedded SRAM in 6 banks 30 multifunction GPIO 6 dedicated IO for SPI Flash (supporting XIP) Dedicated hardware for commonly used peripherals Programmable IO for extended peripheral support 4 channel ADC with internal temperature sensor, 0.5 MSa/s, 12-bit conversion USB 1.1 Host/Device
+[RP2040](https://www.raspberrypi.com/products/raspberry-pi-pico/) 是一款Cortex M0+ 双核MCU，运行频率为 133 MHz (可超频)
 
 [![sites](docs/RP2040.png)](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)
 
@@ -29,12 +29,15 @@
     * SDIO
     * UART
 
+## [资源整理](https://github.com/SoCXin)
 
-## [资源收录](https://github.com/SoCXin)
+本仓库的目的在于整合所有相关资源，提供高效可靠的开发环境和学习指南。
 
 * [参考资源](src/)
 * [参考文档](docs/)
 * [参考工程](project/)
+
+软件开发可使用平台[platform-rp2040](https://github.com/OS-Q/platform-rp2040)
 
 ## [选型建议](https://github.com/SoCXin)
 
@@ -44,12 +47,7 @@
 
 采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有ADC精度高于ESP32，可用于替代ATmega328p，作为通用性很强的MCU，可广泛应用于各种外设驱动和处理场景。
 
-软件开发可使用[platform-rp2040](https://github.com/OS-Q/platform-rp2040)
-
 RP2040中有2个相同的PIO块,每个PIO块都有专用的连接到总线结构,GPIO和中断控制器,每个块有四个状态机,可以独立执行顺序程序来操作GPIO和传输数据。
 
 与通用处理器不同的是,PIO状态机对IO的专业化程度很高(highly specialised),它注重确定性,精确的时序,并与固定功能硬件紧密结合。PIO状态机可以动态地配置和重新配置,以实现许多不同的接口,自由度很高。
 
-
-
-## [www.SoC.xin](http://www.SoC.Xin)
