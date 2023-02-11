@@ -12,7 +12,6 @@ Debug
 *#
 ~*
 target
-.cargo
 *.lock
 Change*
 CHANGE*

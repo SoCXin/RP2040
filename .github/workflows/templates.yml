@@ -1,0 +1,80 @@
+name: templates
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'templates/**'
+      - '**/templates.yml'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Building
+    continue-on-error: ${{ matrix.experimental || false }}
+    strategy:
+      matrix:
+        # All generated code should be running on stable now
+        rust: [nightly, stable]
+        include:
+          # Nightly is only for reference and allowed to fail
+          - rust: nightly
+            experimental: true
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - run: cargo install flip-link
+      - run: rustup target install --toolchain=${{ matrix.rust }} thumbv6m-none-eabi
+      - name: cargo build
+        if: ${{ github.repository_owner }} == 'SoCXin'
+        working-directory: templates/rust/
+        run: |
+          cargo build --all
+          cargo build --all --release
+
+  # lint:
+  #   name: Linting
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         submodules: true
+  #     - uses: actions-rs/toolchain@v1
+  #       with:
+  #         toolchain: stable
+  #         components: clippy
+  #     - run: rustup target install thumbv6m-none-eabi
+  #     - uses: actions-rs/clippy-check@v1
+  #       with:
+  #         token: ${{ secrets.SOC_XIN_TOCKEN }}
+  #         args: --all-features -- -D warnings
+
+  formatting:
+    name: Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt
+      - run: rustup target install thumbv6m-none-eabi
+      - name: cargo check
+        if: ${{ github.repository_owner }} == 'SoCXin'
+        working-directory: templates/rust/
+        run: |
+          cargo fmt -- --check
