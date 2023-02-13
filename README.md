@@ -46,7 +46,7 @@
 
 采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有4ch 12-bit 500Ksps ADC精度优于ESP32，同时可用于替代早期的ATmega328p，广泛应用于各种外设驱动和通用控制场景。
 
-性价比非常高，价格和[STM32G030C8T6 ￥4.2](https://item.szlcsc.com/2392.html)相当，开源资源丰富，在Arduino和Micropython等生态资源上拥有无与伦比的优势。
+性价比非常高，价格和[STM32G030C8T6(￥4.2)](https://item.szlcsc.com/24662.html)相当，开源资源丰富，在Arduino和Micropython等生态资源上拥有无与伦比的优势。
 
 
 RP2040中有2个相同的PIO块,每个PIO块都有专用的连接到总线结构,GPIO和中断控制器,每个块有四个状态机,可以独立执行顺序程序来操作GPIO和传输数据。
