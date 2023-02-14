@@ -9,7 +9,7 @@
 
 ## [芯片简介](https://github.com/SoCXin/RP2040/wiki)
 
-[RP2040](https://www.raspberrypi.com/products/raspberry-pi-pico/) 是一款Cortex M0+ 双核MCU，运行频率为 133 MHz (可超频)
+[RP2040](https://www.raspberrypi.com/products/raspberry-pi-pico/) 是一款Cortex M0+ 双核MCU，运行频率为 133 MHz (极端情况下可超频到1GHz)
 
 [![sites](docs/RP2040.png)](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)
 
@@ -42,9 +42,12 @@
 
 ## [选型建议](https://github.com/SoCXin)
 
-2021年1月发布的[RP2040](https://item.szlcsc.com/2392.html)包含两个子系列: 支持USB的RP2040xxU系列和不支持USB的RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
+2021年1月发布的[RP2040](https://item.szlcsc.com/2392.html)包含两个子系列:
 
-采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有4ch 12-bit 500Ksps ADC，精度优于ESP32，可用于ATmega328p，广泛应用于各种外设驱动和通用控制场景。
+* 支持USB的RP2040xxU系列
+* 不支持USB的RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)
+
+采用TSMC 40nm制程工艺，芯片带有4ch 12-bit 500Ksps ADC，精度优于ESP32，可替换ATmega328p，广泛应用于各种外设驱动和通用控制场景。
 
 性价比非常高，价格介于[STM32G030C8T6(￥4.14)](https://item.szlcsc.com/549607.html)和[STM32G070RBT6(￥5.07)](https://item.szlcsc.com/549618.html)之间，开源资源丰富，在Arduino和Micropython等生态资源上拥有无与伦比的优势。
 

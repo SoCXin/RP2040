@@ -104,7 +104,6 @@ jobs:
           cmake --build build
           cd build
           mkdir output
-          tree -L 2
           mv ./App-IRQs/IRQS_DEMO.uf2 output/
           mv ./App-Scheduling/SCHEDULING_DEMO.uf2 output/
           mv ./App-Template/TEMPLATE.uf2 output/
@@ -115,4 +114,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: RP2040-freeRTOS-UF2
-          path: templates/freeRTOS//output
+          path: templates/freeRTOS/build/output
