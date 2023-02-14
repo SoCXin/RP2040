@@ -30,6 +30,26 @@ Doxyfile
 *.dep
 *.map
 *.hex
-*.bin
+*.sct
 *bak
 CODE_OF_CONDUCT.rst
+# *.ini
+*.uvgu*
+# .gitmodules
+# *.png
+Listings
+Objects
+# mk
+*.launch
+DebugConfig
+RTE
+*.d
+*.o
+*.axf
+*.htm
+*.lnp
+*.scvd
+*.iex
+Obj
+List
+TEST/
