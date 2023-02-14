@@ -1,5 +1,4 @@
-# Pico_Template (v1.8.0)
-An MDK template for Raspberry Pi Pico
+# [Keil MDK Template](https://github.com/GorgonMeducer/Pico_Template)
 
 - **[new]Support the latest pico-sdk (v1.5.0)**
 - Compiler: Arm Compiler 6.15 and above (Using non-intrusive wrapper to support pico-sdk which is written in GCC)
@@ -22,7 +21,7 @@ An MDK template for Raspberry Pi Pico
 
 # How to Use
 
-## 1. Get the Pico_Template
+## 1. Get the Template
 
 I assume that you have the MDK installed on your PC. Please clone the Pico_Template with following command line:
 
@@ -116,7 +115,7 @@ Those bridge functions are decorated as "weak", hence if you want to retarget **
 
 When using configuration**AC6-DebugInSRAM-printf**, all ***printf*** output is retargeted to '**Debug (printf) Viewer**' inside MDK (as shown below) with the help from EventRecorder.
 
-![image-20220104201854052](documents/Pictures/Debug_printf_Viewer.png)
+![image-20220104201854052](docs/Debug_printf_Viewer.png)
 
 
 
@@ -128,10 +127,10 @@ When using configuration**AC6-DebugInSRAM-printf**, all ***printf*** output is r
 
 #### 2.3.1 For AC6-DebugInSRAM configuration
 
-Pico-Template provides a dedicated project configuration for downloading and debugging code in SRAM. This is the most convenient one and it delivers the best development experience among the three configurations. To use it, please follow the steps below:
+Template provides a dedicated project configuration for downloading and debugging code in SRAM. This is the most convenient one and it delivers the best development experience among the three configurations. To use it, please follow the steps below:
 
 1. Boot the Pico with the BOOTSEL button pressed.
-2. Drag and drop **pico-debug-gimmecache.uf2 **to RPI-RP2 mass-storage driver in the explorer. It immediately reboots as a CMSIS-DAP adapter. Pico-debug loads as a RAM only .uf2 image, meaning that it is never written to flash and doesn't replace existing user code.
+2. Drag and drop [pico-debug-gimmecache.uf2](../pico-debug-gimmecache.uf2) to RPI-RP2 mass-storage driver in the explorer. It immediately reboots as a CMSIS-DAP adapter. Pico-debug loads as a RAM only .uf2 image, meaning that it is never written to flash and doesn't replace existing user code.
 3. Open your project which is based on our Pico-Template and switch to ***AC6-DebugInSRAM*** configuration.
 4. Compile and Debug
 5. Enjoy...
@@ -140,7 +139,7 @@ Pico-Template provides a dedicated project configuration for downloading and deb
 
 **1. In this mode, the "RESET" doesn't really work as we expect. If you do want to RESET, please press the "Reset Pico " button shown below:**
 
-![image-20210919180644156](documents/Pictures/Reset_Pico.png)
+![image-20210919180644156](docs/Reset_Pico.png)
 
 **2. If you cannot find this Toolbox, please start your debug session and go to menu "View"->"Toolbox Window".**
 
@@ -172,7 +171,7 @@ In brief,  it is an
 
  To enable the built in support, please set the macro `__PICO_USE_LCD_1IN3__` to `1` in MDK project configuration as shown below:
 
-![](./documents/Pictures/enable_lcd_1in3)
+![](./docs/enable_lcd_1in3.png)
 
 After that, you can
 
@@ -236,14 +235,3 @@ if (dev_read_key(KEY_A)) {
 Pico-Template supports [PikaScript](https://github.com/pikasTech/pikascript) via cmsis-pack which you can find in the root directory. After the installation, please following the [official guidance](https://pikadoc.readthedocs.io/en/latest/get-start_cmsis-pack.html) to enable the support.
 
 **NOTE**: The first time compilation after ***selecting the Before Build/Rebuild*** might takes a longer time than you thought.
-
-![](./documents/Pictures/EnableThePikaBeforeBuild.png)
-
-# Known issue
-
-- Not all peripheral modules are added to the compilation. But I guess it is just a piece of cake for you : P
-
-- ***Please use the elf2uf2 tool in this template*** to convert the generated axf into uf2.
-
-- Might need more documents...
-

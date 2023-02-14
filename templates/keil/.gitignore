@@ -59,7 +59,7 @@ project/mdk/template.uf2
 *._ac
 *.__i
 *@*
-
+template.uf2
 project/mdk/RTE/PikaScript
 RTE_Components.h
 Pre_Include_*

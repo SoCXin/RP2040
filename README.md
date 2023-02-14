@@ -32,7 +32,7 @@
 
 ## [资源整理](https://github.com/SoCXin)
 
-本仓库的目的在于整合所有相关资源，提供高效可靠的开发环境和学习指南。
+本仓库的目的在于整合所有相关资源，提供高效可靠的开发环境和踩坑指南。
 
 * [参考资源](src/)
 * [参考文档](docs/)
@@ -42,9 +42,9 @@
 
 ## [选型建议](https://github.com/SoCXin)
 
-2021年1月发布的[RP2040](https://item.szlcsc.com/2392.html)包含两个子系列，分别为支持无晶振USB FS的RP2040xxU系列和不支持USB的RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
+2021年1月发布的[RP2040](https://item.szlcsc.com/2392.html)包含两个子系列: 支持USB的RP2040xxU系列和不支持USB的RP2040xxN(1.8V-3.6V)/RP2040x4NR(1.8V-5.5V)。
 
-采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有4ch 12-bit 500Ksps ADC精度优于ESP32，同时可用于替代早期的ATmega328p，广泛应用于各种外设驱动和通用控制场景。
+采用TSMC 40nm制程工艺，极端情况下可超频到1GHz，芯片带有4ch 12-bit 500Ksps ADC，精度优于ESP32，可用于ATmega328p，广泛应用于各种外设驱动和通用控制场景。
 
 性价比非常高，价格介于[STM32G030C8T6(￥4.14)](https://item.szlcsc.com/549607.html)和[STM32G070RBT6(￥5.07)](https://item.szlcsc.com/549618.html)之间，开源资源丰富，在Arduino和Micropython等生态资源上拥有无与伦比的优势。
 

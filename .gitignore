@@ -30,7 +30,6 @@ Doxyfile
 *.dep
 *.map
 *.hex
-*.sct
 *bak
 CODE_OF_CONDUCT.rst
 # *.ini
