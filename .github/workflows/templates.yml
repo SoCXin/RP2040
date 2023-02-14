@@ -102,11 +102,13 @@ jobs:
         run: |
           cmake -S . -B build/
           cmake --build build
+          cd build
           mkdir output
-          mv App-IRQs/IRQS_DEMO.uf2 output/
-          mv App-Scheduling/SCHEDULING_DEMO.uf2 output/
-          mv App-Template/TEMPLATE.uf2 output/
-          mv App-Timers/TIMERS_DEMO.uf2 output/
+          tree -L 2
+          mv ./App-IRQs/IRQS_DEMO.uf2 output/
+          mv ./App-Scheduling/SCHEDULING_DEMO.uf2 output/
+          mv ./App-Template/TEMPLATE.uf2 output/
+          mv ./App-Timers/TIMERS_DEMO.uf2 output/
 
       - name: Upload
         if: success()

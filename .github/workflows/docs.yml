@@ -9,6 +9,7 @@ on:
       - master
     paths:
       - 'docs/**'
+      - '**.rst'
       - '**/docs.yml'
 
 env:
