@@ -102,3 +102,15 @@ jobs:
         run: |
           cmake -S . -B build/
           cmake --build build
+          mkdir output
+          mv App-IRQs/IRQS_DEMO.uf2 output/
+          mv App-Scheduling/SCHEDULING_DEMO.uf2 output/
+          mv App-Template/TEMPLATE.uf2 output/
+          mv App-Timers/TIMERS_DEMO.uf2 output/
+
+      - name: Upload
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: RP2040-freeRTOS-UF2
+          path: templates/freeRTOS//output
