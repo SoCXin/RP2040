@@ -79,3 +79,26 @@ jobs:
         working-directory: templates/rust/
         run: |
           cargo fmt -- --check
+
+  freeRTOS:
+    name: freeRTOS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+          token: ${{ secrets.SOC_XIN_TOCKEN }}
+          fetch-depth: 1
+
+      - name: Install
+        if: ${{ github.repository_owner }} == 'SoCXin'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib git
+
+      - name: Build
+        if: ${{ github.repository_owner }} == 'SoCXin'
+        working-directory: templates/freeRTOS/
+        run: |
+          cmake -S . -B build/
+          cmake --build build
