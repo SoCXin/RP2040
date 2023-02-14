@@ -1,0 +1,4 @@
+*.xcworkspace/xcuserdata/*.xcuserdatad
+build
+*.code-workspace
+rp2040.xcworkspace
