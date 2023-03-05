@@ -57,3 +57,8 @@ RP2040中有2个相同的PIO块,每个PIO块都有专用的连接到总线结构
 与通用处理器不同的是,PIO状态机对IO的专业化程度很高(highly specialised),它注重确定性,精确的时序,并与固定功能硬件紧密结合。PIO状态机可以动态地配置和重新配置,以实现许多不同的接口,自由度很高。
 
 [![sites](docs/xin.png)](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)
+
+
+### 开源方案
+
+* [PikaPython](https://github.com/OS-Q/PikaPython)
