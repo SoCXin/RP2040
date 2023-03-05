@@ -24,10 +24,7 @@ jobs:
           # Nightly is only for reference and allowed to fail
           - rust: nightly
             experimental: true
-        os:
-          - ubuntu-latest
-          - macOS-latest
-          - windows-latest
+        os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -94,7 +91,15 @@ jobs:
         if: ${{ github.repository_owner }} == 'SoCXin'
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib git
+          sudo apt-get install -y cmake git gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+
+      # - name: Install GUN GCC
+      #   run: |
+      #     wget https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz
+      #     sudo mkdir -p /opt/gcc-arm/
+      #     sudo tar xvf arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi.tar.xz -C /opt/gcc-arm/
+      #     cd /opt/gcc-arm/
+      #     sudo chown -R root:root arm-gnu-toolchain-12.2.rel1-x86_64-arm-none-eabi/
 
       - name: Build
         if: ${{ github.repository_owner }} == 'SoCXin'

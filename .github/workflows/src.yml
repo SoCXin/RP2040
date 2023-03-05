@@ -10,54 +10,39 @@ on:
 
 jobs:
   demo:
+    strategy:
+      fail-fast: false
+      matrix:
+        example:
+          - "logic"
+          - "probe"
     if: github.repository_owner == 'SoCXin'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
           token: ${{ secrets.SOC_XIN_TOCKEN }}
           fetch-depth: 1
 
       - name: Install
-        if: ${{ github.repository_owner }} == 'SoCXin'
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-arm-none-eabi cmake libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib git
+
+      - name: build demo
+        working-directory: src/demo/${{ matrix.example }}
+        shell: bash
+        run: |
+          mkdir build && cd build
+          PICO_SDK_PATH=../../../../SDK cmake ..
+          cmake .. && make
 
       # - name: Get core count
       #   id: core_count
       #   run : cat /proc/cpuinfo  | grep processor | wc -l
 
-      - name: demo logic
-        working-directory: src/demo/logic
-        shell: bash
-        run: |
-          mkdir build && cd build
-          PICO_SDK_PATH=../../../../SDK cmake ..
-          cmake .. && make
 
-      - name: demo probe
-        working-directory: src/demo/probe
-        shell: bash
-        run: |
-          mkdir build && cd build
-          PICO_SDK_PATH=../../../../SDK cmake ..
-          cmake .. && make
-
-      - name: demo extras
-        working-directory: src/demo/extras
-        shell: bash
-        run: |
-          mkdir build && cd build
-          PICO_SDK_PATH=../../../../SDK cmake ..
-          cmake .. && make
-
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     name: pico-demo
-      #     path: src/demo/build
 
   rust:
     runs-on: ubuntu-latest
